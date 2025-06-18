@@ -1,0 +1,194 @@
+
+.nav-logo img {
+    /* Adjust the maximum width */
+    max-width: 50px;
+     height: auto;
+     /* Add any necessary styling for the logo */
+   }
+   
+   .navbar {
+     background-color: white;
+     height: 80px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     font-size: 1.2rem;
+     position: sticky;
+     top: 0;
+     z-index: 20;
+   }
+   
+   .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1500px;
+   }
+   
+   .nav-logo {
+     color: #0a0a0a;
+     align-items: center;
+     margin-left: 20px;
+     cursor: pointer;
+     text-decoration: none;
+     flex-grow: 1;
+     display: flex;
+     align-items: center;
+     justify-items: center;
+   }
+   
+   
+   .nav-menu {
+     display: flex;
+     list-style: none;
+     text-align: none;
+     margin: 0;
+   }
+   .nav-menu-right {
+    display: flex;
+    list-style: none;
+    margin-left: auto; /* Push this menu to the right */
+  }
+   .nav-menu-container {
+    display: flex;
+    justify-content: center; /* Center the main menu */
+    flex-grow: 1; /* Allow this section to take available space */
+  }
+   
+   .nav-links {
+     color: #fff;
+     text-decoration: none;
+     padding: 0.5rem 1rem;
+     height: 100%;
+     border-bottom: 3px solid transparent;
+     max-width: 120px; /* Adjust the maximum width according to your design */
+     white-space: nowrap; /* Prevent NavLink words from wrapping onto a new line */
+     overflow: hidden; /* Hide any overflowed content */
+    text-overflow: ellipsis; /* Display ellipsis (...) for truncated text */
+    }
+   /* .fa-code {
+     margin-left: 1rem;
+   } */
+   
+   .nav-item {
+    margin: 0 1rem;
+     line-height: 40px;
+     margin-right: 1rem;
+   }
+   
+   .nav-item:after {
+     content: "";
+     display: block;
+     height: 3px;
+     width: 0;
+     background: transparent;
+     transition: width 0.7s ease, background-color 0.5s ease;
+   }
+   
+   .nav-item:hover:after {
+     width: 100%;
+     background: #ffdd40;
+   }
+   
+   .nav-item .active {
+     color: black;
+
+   }
+   
+   .nav-icon {
+     display: none;
+     color: black;
+   }
+   
+   .nav-icon .icon {
+     display: inline-block;
+     width: 2rem;
+     height: 2rem;
+   }
+   .nav-menu,
+.nav-menu-right {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+   
+   @media screen and (max-width: 960px) {
+     .nav-menu {
+       display: flex;
+       flex-direction: column;
+       width: 100%;
+       border-top: 1pxsolid #fff;
+       position: absolute;
+       top: 80px;
+       left: -110%;
+       opacity: 1;
+       transition: all 0.5s ease;
+     }
+     .nav-menu-container {
+        flex-direction: column; /* Stack the menus vertically */
+        /* Center items */
+        width: 100%; /* Take full width */
+      }
+
+      .nav-menu, .nav-menu-right {
+        display: none;
+        display: flex; /* Display the lists */
+        flex-direction: column; /* Stack items vertically */
+        width: 100%; /* Full width */
+        margin: 0; /* Remove margin */
+        padding: 0; /* Remove padding */
+      }
+      .nav-icon {
+        display: block; /* Show hamburger icon */
+      }
+     
+      .nav-item {
+        margin: 0; /* Reset margin for stacked layout */
+        width: 100%; /* Make items full width */
+      }
+
+      .nav-menu-container.active .nav-menu,
+      .nav-menu-container.active .nav-menu-right {
+        display: flex; /* Show when active */
+        background: #154c79; /* Background for mobile menu */
+        position: absolute; /* Position it correctly */
+        top: 80px; /* Align below the navbar */
+        left: 0; /* Align to the left */
+        opacity: 1; /* Ensure it’s visible */
+        transition: all 0.5s ease; /* Smooth transition */
+      }
+
+
+
+     .nav-item .active {
+       color: #ffdd40;
+       border: none;
+     }
+     .nav-links {
+       padding: 1.5rem;
+       width: 100%;
+       text-align: center;
+       display: table;
+     }
+    
+     .nav-logo .icon {
+       width: 2rem;
+       height: 2rem;
+     }
+   
+     .nav-icon {
+       display: block;
+       position: absolute;
+       top: 50%;
+       right: 0;
+       transform: translate(-100%, -50%);
+       width: 2rem;
+       height: 2rem;
+       cursor: pointer;
+       color: #ffdd40;
+     }
+   }
+   
