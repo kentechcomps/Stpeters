@@ -1,48 +1,56 @@
-import React from 'react';
-import logo from './assets/logo.png'; // Adjust the path as necessary
-
+import React, { useState } from 'react';
+import { ArrowRight, Loader2 } from "lucide-react"; 
+import logo from './assets/logo.png'; 
+import { useNavigate } from 'react-router-dom';
 
 const Banner = () => {
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+
+  const handleLoginClick = () => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      navigate("/login");
+    }, 1000);
+  };
+
   return (
-      <div className="bg-white text-purple-600 py-6 shadow-md border-t border-b border-gray-300">
+    <div className="relative bg-gradient-to-r from-red-500 via-rose-600 to-slate-800 text-white py-6 shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
-        {/* Logo Placeholder */}
+        
+        {/* Logo */}
         <div className="flex-shrink-0">
-          <div className="w-32 h-16 bg-gray-200 flex items-center justify-center rounded-md">
-            <img src={logo} alt="Logo" className="w-full h-full object-contain" />
+          <div className="w-32 h-16 bg-white border border-rose-500 flex items-center justify-center rounded-md shadow-md hover:shadow-lg hover:shadow-rose-400/50 transition">
+            <img src={logo} alt="Logo" className="w-32 h-16 object-contain" />
           </div>
         </div>
 
-        {/* Phone Numbers with Icon */}
-        <div className="flex items-center gap-3">
-          <svg
-            className="w-8 h-8 text-purple-600"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
+        {/* Action Buttons */}
+        <div className="flex gap-3">
+          {/* Primary Button */}
+          <button className="bg-white text-rose-700 px-6 py-3 rounded-md text-lg font-semibold shadow-md hover:bg-gray-100 transition">
+            Apply Now
+          </button>
+
+          {/* Secondary Button (Login) */}
+          <button
+            onClick={handleLoginClick}
+            disabled={loading}
+            className="flex items-center gap-2 border border-white text-white px-6 py-3 rounded-md text-lg font-semibold hover:bg-white hover:text-rose-700 transition disabled:opacity-70 disabled:cursor-not-allowed"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-            />
-          </svg>
-          <div className="flex flex-col">
-            <a href="tel:+1234567890" className="text-lg font-medium hover:underline">
-              +123-456-7890
-            </a>
-            <a href="tel:+0987654321" className="text-lg font-medium hover:underline">
-              +098-765-4321
-            </a>
-          </div>
+            {loading ? (
+              <>
+                <Loader2 className="w-5 h-5 animate-spin" />
+                Redirecting...
+              </>
+            ) : (
+              <>
+                Login <ArrowRight className="w-5 h-5" />
+              </>
+            )}
+          </button>
         </div>
-
-        {/* Apply Now Button */}
-        <button className="bg-purple-600 text-white px-6 py-3 rounded-md text-lg font-semibold hover:bg-purple-700 transition">
-          Apply Now
-        </button>
       </div>
     </div>
   );

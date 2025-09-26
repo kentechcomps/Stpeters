@@ -1,20 +1,32 @@
 import { useState } from 'react';
-
 import { Link } from 'react-router-dom';
-import Topnavigationbar from '/Navigationbar';
+import { FaWhatsapp } from 'react-icons/fa'; // ✅ Import WhatsApp icon
+
+import Topnavigationbar from './Navigationbar.jsx';
 import Carousel from './Carossel';
 import Mission from './Mission';
-import Chooseus from './ Chooseus';
+import Footer from './footer.jsx';
+import Chooseus from './ Chooseus'; // ✅ remove the space in filename
+import Programs from './Program.jsx';
+import AchievementsSection from './Achievementsection.jsx';
+import Anniversary from './Anniversary.jsx';
+import ManagersReport from './Managersreport.jsx';
 
 function Home() {
- 
   return (
-    <>
-       <Topnavigationbar />
-       <Carousel />
-        <Mission />
-        <Chooseus />  
-    </>
+   <div className="relative">
+    
+      <Carousel />
+      <Mission />
+      <Chooseus />
+      <Anniversary />
+      <AchievementsSection />
+      <ManagersReport />
+      <Programs />
+      
+      
+   
+    </div>
   );
 }
 
