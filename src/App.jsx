@@ -31,6 +31,7 @@ import ReportsDashboard from './Report.jsx'
 import SettingsPage from './Settings.jsx'
 import Programs from './Program.jsx'
 import ContactUs from './Contactus.jsx'
+import { Toaster } from "react-hot-toast";
 function App() {
   const [count, setCount] = useState(0)
 
@@ -42,6 +43,7 @@ function App() {
 
      
       <Topnavigationbar/>
+      <Toaster position="top-right" reverseOrder={false} />
        
         <Routes>
           <Route path="/" element={<Home />} />

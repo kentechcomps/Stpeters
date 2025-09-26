@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "./Authcontext";
+import logo from './assets/logo.png'; 
+import background from './assets/background.webp'; // 👈 use the generated image
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -9,7 +11,6 @@ const LoginPage = () => {
   const { login } = useAuth();
 
   const navigate = useNavigate();
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,14 +28,17 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="bg-white p-8 rounded-xl shadow-md w-full max-w-md">
+    <div
+      className="flex items-center justify-center min-h-screen bg-cover bg-center"
+      style={{ backgroundImage: `url(${background})` }} // 👈 background applied
+    >
+      <div className="bg-white bg-opacity-90 p-8 rounded-xl shadow-md w-full max-w-md">
         {/* Logo */}
         <div className="flex justify-center mb-6">
           <img
-            src="https://img.icons8.com/ios-filled/100/000000/school-building.png"
+            src={logo}
             alt="School Logo"
-            className="h-20 w-20"
+            className="w-32 h-auto md:w-40 object-contain"
           />
         </div>
         <h2 className="text-2xl font-bold text-center mb-6 text-gray-800">

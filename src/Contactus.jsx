@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import learners from './assets/learners.png'
 import emailjs from 'emailjs-com';
+import toast from 'react-hot-toast';
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -15,7 +16,7 @@ const ContactUs = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-    const handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     // EmailJS integration
@@ -33,14 +34,13 @@ const ContactUs = () => {
     )
     .then((result) => {
         console.log("Email sent successfully!", result.text);
-        alert("Your message has been sent ✅");
+        toast.success("✅ Your message has been sent!");
+        setFormData({ firstName: '', lastName: '', email: '', phone: '', message: '' }); // reset form
     }, (error) => {
         console.error("Email sending failed:", error.text);
-        alert("Failed to send message ❌");
+        toast.error("❌ Failed to send message. Try again later.");
     });
   };
-
-    // Add form submission logic here
 
   return (
     <>
@@ -141,7 +141,7 @@ const ContactUs = () => {
                   ></textarea>
                 </div>
               </div>
-               <button
+              <button
                 type="submit"
                 className="bg-navy-800 text-yellow-400 w-[80%] mx-auto block px-6 py-3 rounded font-bold hover:bg-yellow-400 hover:text-navy-800 transition-colors"
               >
