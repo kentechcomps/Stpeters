@@ -32,6 +32,7 @@ import SettingsPage from './Settings.jsx'
 import Programs from './Program.jsx'
 import ContactUs from './Contactus.jsx'
 import { Toaster } from "react-hot-toast";
+import AdmissionWizard from './Admissions.jsx'
 function App() {
   const [count, setCount] = useState(0)
 
@@ -92,7 +93,8 @@ function App() {
         />
         <Route path='/feemanagement' element={<ClerkPayments/>}/>
         <Route path='/contactus' element={<ContactUs/>}/>
-       
+        <Route path='/admissions' element={<AdmissionWizard/>}/>
+     
         </Routes>
          <Footer/>
 

@@ -61,7 +61,7 @@ const Topnavigationbar = () => {
         >
           <NavLink to="/" className="hover:text-blue-600">Home</NavLink>
           <a href="#aboutus" className="hover:text-blue-600">About</a>
-          <a href="#gallery" className="hover:text-blue-600">Admissions</a>
+          <NavLink to="/admissions" className="hover:text-blue-600">Admissions</NavLink>
           <NavLink to="/contactus" className="hover:text-blue-600">Contactus</NavLink>
 
           {/* Mobile Extras (Socials + Buttons) */}
