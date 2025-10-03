@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { supabase } from "./Supabaseclient";
+import { NavLink } from "react-router-dom";
 
 const steps = [
   { id: 0, title: "Personal Info", description: "Enter learner's basic details" },
@@ -148,12 +149,12 @@ export default function AdmissionWizard() {
                 admissions@stpetersacademy.ac.ke
               </a>
             </p>
-            <a
-              href="https://makinischool.ac.ke/fees"
+            <NavLink
+              to="/feesection"
               className="inline-block bg-blue-600 text-white font-semibold py-3 px-6 rounded-full shadow-md hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
             >
               Explore School Fees
-            </a>
+            </NavLink>
           </div>
         </div>
       </div>
