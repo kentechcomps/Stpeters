@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
 import { supabase } from "./Supabaseclient";
 import { NavLink } from "react-router-dom";
 
@@ -11,6 +11,7 @@ const steps = [
 
 export default function AdmissionWizard() {
   const [currentStep, setCurrentStep] = useState(0);
+    const [classes, setClasses] = useState([]);
   const [formData, setFormData] = useState({
     first_name: "",
     last_name: "",
@@ -19,7 +20,6 @@ export default function AdmissionWizard() {
     guardian_phone: "",
     documents: null,
     grade: "",
-    stream: ""
   });
 
   const progress = ((currentStep + 1) / steps.length) * 100;
@@ -36,50 +36,87 @@ export default function AdmissionWizard() {
     }
   };
 
-  const handleChange = (e) => {
-    const { name, value, files } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: files ? files[0] : value,
-    }));
-  };
+const handleChange = (e) => {
+  const { name, value, files } = e.target;
+  setFormData((prev) => ({
+    ...prev,
+    [name]: files ? Array.from(files) : value, // support multiple files
+  }));
+};
 
-  const handleSubmit = async () => {
+const handleSubmit = async () => {
+  try {
+    let uploadedUrls = [];
+
+    if (formData.documents && formData.documents.length > 0) {
+      for (const file of formData.documents) {
+        const fileName = `${Date.now()}_${file.name}`;
+
+        const { data: uploadData, error: uploadError } = await supabase.storage
+          .from("admission_docs")
+          .upload(fileName, file);
+
+        if (uploadError) {
+          console.error("Upload error:", uploadError.message);
+          throw uploadError;
+        }
+
+        // ✅ Use .data.publicUrl safely
+        const { data: publicUrlData } = supabase.storage
+          .from("admission_docs")
+          .getPublicUrl(fileName);
+
+        uploadedUrls.push(publicUrlData.publicUrl);
+      }
+    }
+
+    // ✅ Insert admission data into table
+    const { error: insertError } = await supabase.from("admissions").insert([
+      {
+        first_name: formData.first_name,
+        last_name: formData.last_name,
+        dob: formData.dob,
+        guardian_name: formData.guardian_name,
+        guardian_phone: formData.guardian_phone,
+        grade: formData.grade,
+        documents: uploadedUrls, // array of URLs
+      },
+    ]);
+
+    if (insertError) throw insertError;
+
+    alert("✅ Admission saved successfully!");
+    setFormData({
+      first_name: "",
+      last_name: "",
+      dob: "",
+      guardian_name: "",
+      guardian_phone: "",
+      documents: [],
+      grade: "",
+    });
+    setCurrentStep(0);
+  } catch (err) {
+    console.error("Error during upload:", err.message);
+    alert("⚠️ Upload failed: " + err.message);
+  }
+};
+
+  const fetchClasses = async () => {
     try {
-      const { error } = await supabase.from("admissions").insert([
-        {
-          first_name: formData.first_name,
-          last_name: formData.last_name,
-          dob: formData.dob,
-          guardian_name: formData.guardian_name,
-          guardian_phone: formData.guardian_phone,
-          grade: formData.grade,
-          stream: formData.stream,
-        },
-      ]);
-
-      if (error) throw error;
-
-      alert("🎉 Admission saved successfully in Supabase!");
-      console.log("Final Admission Data:", formData);
-
-      // Reset after submit
-      setFormData({
-        first_name: "",
-        last_name: "",
-        dob: "",
-        guardian_name: "",
-        guardian_phone: "",
-        documents: null,
-        grade: "",
-        stream: ""
-      });
-      setCurrentStep(0);
+      const res = await fetch("http://localhost:5000/api/classes");
+      const data = await res.json();
+      setClasses(data);
+      console.log("Classes fetched:", data);
+      
     } catch (err) {
-      console.error("Error saving admission:", err.message);
-      alert("⚠️ Failed to save admission. Please try again.");
+      console.error("Error fetching classes:", err.message);
     }
   };
+
+useEffect(() => {
+  fetchClasses();
+}, []);
 
   return (
     <div className="w-[70%] mx-auto p-6 bg-white shadow-lg rounded-lg">
@@ -340,9 +377,12 @@ export default function AdmissionWizard() {
                 <svg className="w-12 h-12 text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
                 </svg>
-                <p className="text-lg font-medium text-gray-700 mb-2">
-                  {formData.documents ? `Selected: ${formData.documents.name}` : "Click to upload or drag and drop"}
-                </p>
+            <p className="text-lg font-medium text-gray-700 mb-2">
+  {formData.documents && formData.documents.length > 0
+    ? `Selected: ${formData.documents.map((f) => f.name).join(", ")}`
+    : "Click to upload or drag and drop"}
+</p>
+
                 <p className="text-sm text-gray-500">Birth Certificate, KCPE Results, etc. (PDF, JPG, PNG)</p>
               </label>
             </div>
@@ -359,38 +399,26 @@ export default function AdmissionWizard() {
               Assign Class & Stream
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Grade/Class</label>
-                <select
-                  name="grade"
-                  value={formData.grade}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white"
-                  required
-                >
-                  <option value="">Select Class</option>
-                  <option value="Grade 1">Grade 1</option>
-                  <option value="Grade 2">Grade 2</option>
-                  <option value="Form 1">Form 1</option>
-                  <option value="Form 2">Form 2</option>
-                </select>
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Stream</label>
-                <select
-                  name="stream"
-                  value={formData.stream}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white"
-                  required
-                >
-                  <option value="">Select Stream</option>
-                  <option value="East">East</option>
-                  <option value="West">West</option>
-                  <option value="North">North</option>
-                  <option value="South">South</option>
-                </select>
-              </div>
+             <div>
+  <label className="block text-sm font-medium text-gray-700 mb-2">
+    Grade/Class
+  </label>
+  <select
+    name="grade"
+    value={formData.grade}
+    onChange={handleChange}
+    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white"
+    required
+  >
+    <option value="">Select Class</option>
+    {classes.map((cls) => (
+      <option key={cls.id} value={cls.name}>
+        {cls.name} ({cls.category})
+      </option>
+    ))}
+  </select>
+</div>
+
             </div>
             <div className="mt-4 p-4 bg-blue-50 rounded-lg">
               <p className="text-sm text-blue-700">

@@ -15,7 +15,7 @@ const Footer = () => {
         }}
       >
         {/* Overlay */}
-        <div className="absolute inset-0 bg-[#010A4D] opacity-95"></div>
+        <div className="absolute inset-0 bg-purple-900 opacity-95"></div>
 
         {/* Main Footer Content */}
         <div className="relative z-10 px-6 py-16 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16 text-white">

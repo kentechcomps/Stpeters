@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { ArrowRight, Loader2 } from "lucide-react"; 
+import { ArrowRight, Loader2, Facebook, Twitter, Instagram, Linkedin } from "lucide-react"; 
 import logo from './assets/logo.png'; 
-import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
-
 
 const Topnavigationbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const navigate = useNavigate();
 
   const toggleMenu = () => setIsOpen(!isOpen);
@@ -20,8 +20,32 @@ const Topnavigationbar = () => {
     }, 1000);
   };
 
+  // 💨 Smooth hide/show on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      if (Math.abs(currentScrollY - lastScrollY) < 5) return; // prevent flickering
+
+      if (currentScrollY > lastScrollY && currentScrollY > 80) {
+        // scrolling down
+        setIsVisible(false);
+      } else {
+        // scrolling up
+        setIsVisible(true);
+      }
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
+
   return (
-    <header className="sticky top-0 z-50 w-full bg-white shadow-md">
+    <header
+      className={`fixed top-0 left-0 z-50 w-full bg-white shadow-md backdrop-blur-md transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] ${
+        isVisible ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
+      }`}
+    >
       <nav className="max-w-7xl mx-auto flex items-center justify-between px-6 py-3 md:px-10">
         
         {/* Logo */}
@@ -60,53 +84,27 @@ const Topnavigationbar = () => {
           }`}
         >
           <NavLink to="/" className="hover:text-blue-600">Home</NavLink>
-          <a href="#aboutus" className="hover:text-blue-600">About</a>
+          <NavLink to="/aboutus" className="hover:text-blue-600">Aboutus</NavLink>
           <NavLink to="/admissions" className="hover:text-blue-600">Admissions</NavLink>
           <NavLink to="/contactus" className="hover:text-blue-600">Contactus</NavLink>
 
-          {/* Mobile Extras (Socials + Buttons) */}
+          {/* Mobile Extras */}
           <div className="flex flex-col md:hidden gap-6 mt-6">
-            
-            {/* Social Media */}
-{/* Social Icons */}
-<div className="flex justify-center space-x-6 mt-6">
-  <a
-    href="#"
-    className="bg-white p-2 rounded-full text-blue-900 hover:bg-yellow-400 transition-all"
-  >
-    <Facebook className="w-5 h-5" />
-  </a>
-  <a
-    href="#"
-    className="bg-white p-2 rounded-full text-blue-900 hover:bg-yellow-400 transition-all"
-  >
-    <Twitter className="w-5 h-5" />
-  </a>
-  <a
-    href="#"
-    className="bg-white p-2 rounded-full text-blue-900 hover:bg-yellow-400 transition-all"
-  >
-    <Instagram className="w-5 h-5" />
-  </a>
-  <a
-    href="#"
-    className="bg-white p-2 rounded-full text-blue-900 hover:bg-yellow-400 transition-all"
-  >
-    <Linkedin className="w-5 h-5" />
-  </a>
-</div>
-
+            {/* Social Icons */}
+            <div className="flex justify-center space-x-6 mt-6">
+              {[Facebook, Twitter, Instagram, Linkedin].map((Icon, i) => (
+                <a key={i} href="#" className="bg-white p-2 rounded-full text-blue-900 hover:bg-yellow-400 transition-all">
+                  <Icon className="w-5 h-5" />
+                </a>
+              ))}
+            </div>
 
             {/* Action Buttons */}
             <div className="flex flex-col items-center gap-4">
-              {/* Apply Now */}
-              <button
-                className="w-full px-4 py-2 rounded-full bg-gradient-to-r from-rose-500 to-purple-600 text-white font-semibold shadow hover:scale-105 transition"
-              >
+              <button className="w-full px-4 py-2 rounded-full bg-gradient-to-r from-rose-500 to-purple-600 text-white font-semibold shadow hover:scale-105 transition">
                 Apply Now
               </button>
 
-              {/* Login */}
               <button
                 onClick={handleLoginClick}
                 disabled={loading}
@@ -126,48 +124,27 @@ const Topnavigationbar = () => {
 
         {/* Right Section (Desktop Only) */}
         <div className="hidden md:flex items-center gap-6">
-          
-          {/* Social Media */}
-{/* Social Icons */}
-<div className="flex items-center space-x-4">
-  <a
-    href="#"
-    className="bg-white p-2 rounded-full text-blue-900 hover:bg-yellow-400 transition-all"
-  >
-    <Facebook className="w-5 h-5" />
-  </a>
-  <a
-    href="#"
-    className="bg-white p-2 rounded-full text-blue-900 hover:bg-yellow-400 transition-all"
-  >
-    <Twitter className="w-5 h-5" />
-  </a>
-  <a
-    href="#"
-    className="bg-white p-2 rounded-full text-blue-900 hover:bg-yellow-400 transition-all"
-  >
-    <Instagram className="w-5 h-5" />
-  </a>
-  <a
-    href="#"
-    className="bg-white p-2 rounded-full text-blue-900 hover:bg-yellow-400 transition-all"
-  >
-    <Linkedin className="w-5 h-5" />
-  </a>
-</div>
-
+          {/* Social Icons */}
+          <div className="flex items-center space-x-4">
+            {[Facebook, Twitter, Instagram, Linkedin].map((Icon, i) => (
+              <a key={i} href="#" className="bg-white p-2 rounded-full text-blue-900 hover:bg-yellow-400 transition-all">
+                <Icon className="w-5 h-5" />
+              </a>
+            ))}
+          </div>
 
           {/* Action Buttons */}
           <div className="flex items-center gap-3">
-            <button
-              className="px-4 py-2 rounded-full bg-gradient-to-r from-rose-500 to-purple-600 text-white font-semibold shadow hover:scale-105 transition"
-            >
-              Apply Now
-            </button>
+            <NavLink to="/admissions">
+              <button className="px-4 py-2 rounded-full bg-gradient-to-r from-rose-500 to-purple-600 text-white font-semibold shadow hover:scale-105 transition cursor-pointer">
+                Apply Now
+              </button>
+            </NavLink>
+
             <button
               onClick={handleLoginClick}
               disabled={loading}
-              className="flex items-center gap-1 px-4 py-2 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold shadow hover:scale-105 transition disabled:opacity-70"
+              className="flex items-center gap-1 px-4 py-2 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold shadow hover:scale-105 transition disabled:opacity-70 cursor-pointer"
             >
               {loading ? (
                 <Loader2 className="w-4 h-4 animate-spin" />

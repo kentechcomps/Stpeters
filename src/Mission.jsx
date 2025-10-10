@@ -72,7 +72,7 @@ const Mission = () => {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.2 }}
-              className="group bg-[#0f2747] border border-yellow-400/40 rounded-2xl shadow-xl p-8 transition hover:-translate-y-2 hover:shadow-yellow-500/40"
+              className="group bg-purple-900 border border-yellow-400/40 rounded-2xl shadow-xl p-8 transition hover:-translate-y-2 hover:shadow-yellow-500/40"
             >
               <div className="flex items-center gap-3 mb-6">
                 <div className="p-3 bg-yellow-400/20 rounded-full">{card.icon}</div>

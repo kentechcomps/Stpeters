@@ -35,7 +35,7 @@ const ManagersReport = () => {
   const particles = Array.from({ length: 15 }); // 15 floating particles
 
   return (
-    <section className="relative w-full bg-[#001f3f] py-24 px-6 md:px-20 text-center overflow-hidden">
+    <section className="relative w-full bg-purple-900 py-24 px-6 md:px-20 text-center overflow-hidden">
       <div className="relative max-w-5xl mx-auto flex flex-col items-center justify-center">
 
         {/* Floating Particles */}

@@ -5,6 +5,7 @@ import pic3 from './assets/pic3.jpg';
 import pic4 from './assets/pic4.jpg';
 import student from './assets/student.webp'
 import banner from './assets/banner.jpg'
+import { NavLink } from 'react-router-dom';
 
 function Carousel() {
   const images = [banner,banner, banner, banner];
@@ -27,13 +28,13 @@ function Carousel() {
 
   return (
     <>
-    <section className="relative bg-gradient-to-r from-[#0a1d37] to-[#1a1f36] py-20 overflow-hidden">
+    <section className="relative bg-gradient-to-r from-purple-900 to-purple-900 py-20 overflow-hidden">
   {/* Animated Waves */}
-  <div className="absolute inset-0">
+<div className="absolute inset-0">
     {/* Back wave (slower) */}
     <div className="absolute bottom-0 left-0 right-0">
       <svg
-        className="w-[200%] h-40 text-[#fbbf24] opacity-10 animate-wave-slow"
+        className="w-[200%] h-40 text-white opacity-10 animate-wave-slow"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 1440 320"
         fill="currentColor"
@@ -45,7 +46,7 @@ function Carousel() {
     {/* Front wave (faster) */}
     <div className="absolute bottom-0 left-0 right-0">
       <svg
-        className="w-[200%] h-40 text-[#fbbf24] opacity-30 animate-wave-fast"
+        className="w-[200%] h-40 text-white opacity-30 animate-wave-fast"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 1440 320"
         fill="currentColor"
@@ -79,12 +80,21 @@ function Carousel() {
         Providing quality education and a nurturing environment for tomorrow’s leaders.
       </p>
       <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-        <button className="bg-[#fbbf24] text-[#0a1d37] font-semibold px-6 py-3 rounded-xl shadow-md hover:bg-[#eab308] transition">
-          Apply Now
-        </button>
-        <button className="border border-[#fbbf24] text-[#fbbf24] px-6 py-3 rounded-xl hover:bg-[#fbbf24] hover:text-[#0a1d37] transition">
+<NavLink to="/admissions">
+  <button className="bg-[#fbbf24] text-[#0a1d37] font-semibold px-6 py-3 rounded-xl shadow-md hover:bg-[#eab308] transition cursor-pointer">
+    Apply Now
+  </button>
+</NavLink>
+
+
+        <NavLink 
+         to="/feesection"
+        >
+        <button className="border border-[#fbbf24] text-[#fbbf24] px-6 py-3 rounded-xl hover:bg-[#fbbf24] hover:text-[#0a1d37] transition cursor-pointer">
           View Fee Structure
         </button>
+        </NavLink>
+
       </div>
     </div>
 

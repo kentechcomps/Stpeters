@@ -34,7 +34,7 @@ import ContactUs from './Contactus.jsx'
 import { Toaster } from "react-hot-toast"
 import AdmissionWizard from './Admissions.jsx'
 import SchoolFeeSection from './Feesection.jsx'; // Adjust the path as necessary to where you saved the FeeSection component
-
+import AboutUs from './Aboutus.jsx'
 function App() {
   const [count, setCount] = useState(0)
 
@@ -97,7 +97,7 @@ function App() {
         <Route path='/contactus' element={<ContactUs/>}/>
         <Route path='/admissions' element={<AdmissionWizard/>}/>
         <Route path='/feesection' element={<SchoolFeeSection/>}/>
-       
+        <Route path='/aboutus' element={<AboutUs/>}/>
         </Routes>
          <Footer/>
 
