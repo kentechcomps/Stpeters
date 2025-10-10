@@ -1,98 +1,137 @@
 import React from 'react';
+import { Users, BookOpen, Star, Globe, HeartHandshake } from "lucide-react"; // icons
+import computer from './assets/computer.webp'
+import learning from './assets/learning.webp'
+import cocurriculum from './assets/cocurriculum.webp'
 
 const AboutUs = () => {
+    const strengths = [
+  {
+    icon: <Users className="w-10 h-10 text-blue-500" />,
+    title: "Qualified Staff",
+    description:
+      "Our teachers are dedicated professionals with years of experience nurturing academic and personal growth.",
+  },
+  {
+    icon: <BookOpen className="w-10 h-10 text-purple-500" />,
+    title: "Comprehensive Curriculum",
+    description:
+      "We provide a well-balanced curriculum designed to challenge and inspire learners to achieve their best.",
+  },
+  {
+    icon: <Star className="w-10 h-10 text-yellow-500" />,
+    title: "Excellent Performance",
+    description:
+      "Our consistent top performance in academics and extracurricular activities makes us a leader in education.",
+  },
+  {
+    icon: <Globe className="w-10 h-10 text-green-500" />,
+    title: "Modern Facilities",
+    description:
+      "We have state-of-the-art classrooms, laboratories, and sports facilities for holistic development.",
+  },
+  {
+    icon: <HeartHandshake className="w-10 h-10 text-rose-500" />,
+    title: "Strong Community Values",
+    description:
+      "We foster an environment of respect, cooperation, and lifelong friendships among students and staff.",
+  },
+];
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-100 py-12 px-4 sm:px-6 lg:px-8 mt-10">
       {/* Hero Section */}
       <section className="text-center mb-16">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Who We Are
+            About St. Peters Academy
           </h1>
           <p className="text-xl text-gray-600 leading-relaxed">
-            St. Peter's Girls High School: Empowering young women through excellence in education, faith, and innovation.
+            St. Peters Academy — nurturing excellence from early learning to secondary education through innovation, faith, and holistic growth.
           </p>
-          <div className="mt-8 flex justify-center space-x-4">
+          <div className="mt-8 flex justify-center space-x-4 flex-wrap">
             <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-indigo-100 text-indigo-800">
-              Founded 2004
+              Established 2004
             </span>
             <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-green-100 text-green-800">
-              Christian Values
+              Christian Foundation
             </span>
             <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-blue-100 text-blue-800">
-              2-6-3-3-3 Curriculum
+              Primary & Secondary Sections
             </span>
           </div>
         </div>
       </section>
 
-      {/* History Section */}
+      {/* Our Journey */}
       <section className="max-w-7xl mx-auto mb-16">
         <div className="grid md:grid-cols-2 gap-8 items-center">
           <div className="space-y-6">
             <h2 className="text-3xl font-bold text-gray-900">Our Journey</h2>
             <p className="text-lg text-gray-700 leading-relaxed">
-              St. Peter’s education model kicked off in 2004 as a private institution offering primary education in the 8.4.4 Curriculum. Our ultimate goal was to uplift academic performance in the area by using diverse methodologies of teaching. We wished to make a difference in the academic performance of learners in the area, which was dominated by community and government schools with insufficient resources. In addition, we aimed at rehabilitating our young girls and supporting financially disadvantaged learners.
+              Founded in 2004, St. Peters Academy began as a private primary school under the 8-4-4 Curriculum with one goal — to uplift academic performance in Masinga through quality education and faith-driven mentorship. 
             </p>
             <p className="text-lg text-gray-700 leading-relaxed">
-              For over a decade, St. Peter’s fraternity has served students, families, and the entire Machakos County and beyond with excellence. We have grown to become a model school of excellence with an IT center in the region. In 2015, our primary school – St. Peters Academy Ekalakala – was honored to be the best in academic performance in Machakos County, and we have maintained this trajectory.
+              Over time, our success inspired growth. St. Peters Academy expanded into a comprehensive educational institution offering both Primary and Secondary sections. We continue to impact families across Machakos County with excellence and compassion.
             </p>
             <blockquote className="mt-6 italic text-gray-600 border-l-4 border-indigo-500 pl-4">
-              "We nurture talents in sports and music. Our pupils have showcased their talents at zonal, sub-county, and national levels. St. Peters fraternity is a Christian family, and we model our learners to grow in Christian faith."
+              "We empower young girls and boys through knowledge, discipline, and Christian values — building tomorrow’s leaders today."
             </blockquote>
           </div>
           <div className="relative">
-            <div className="bg-gradient-to-r from-indigo-500 to-blue-600 rounded-2xl p-8 h-96 flex items-center justify-center">
+            <div className="bg-gradient-to-r from-indigo-600 to-blue-500 rounded-2xl p-8 h-96 flex items-center justify-center shadow-lg hover:scale-105 transition-transform duration-300">
               <div className="text-white text-center">
                 <h3 className="text-2xl font-semibold mb-2">Excellence Since 2004</h3>
-                <p className="text-indigo-100">Top Performers in Machakos County</p>
+                <p className="text-indigo-100">From Primary to Secondary — Transforming Lives</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Management & Approach */}
-      <section className="max-w-7xl mx-auto mb-16 bg-white rounded-2xl shadow-lg p-8">
-        <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-gray-900">Our Dedicated Team & Approach</h2>
+<section className="py-20 bg-gradient-to-b from-gray-50 to-white" id="strengths">
+      <div className="max-w-7xl mx-auto px-6 text-center">
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-12">
+          Our <span className="text-purple-600">Core Strengths</span>
+        </h2>
+
+        <div className="grid md:grid-cols-3 gap-10">
+          {strengths.map((item, index) => (
+            <div
+              key={index}
+              className="bg-white/60 backdrop-blur-lg shadow-lg rounded-2xl p-8 border border-white/40 hover:shadow-xl transition transform hover:-translate-y-1"
+            >
+              <div className="flex justify-center mb-4">{item.icon}</div>
+              <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                {item.title}
+              </h3>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                {item.description}
+              </p>
+            </div>
+          ))}
         </div>
-        <div className="grid md:grid-cols-3 gap-6">
-          <div className="text-center p-6 rounded-xl bg-indigo-50">
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">Qualified Staff</h3>
-            <p className="text-gray-600">Our management and staff are highly qualified and dedicated to achieving excellent results.</p>
-          </div>
-          <div className="text-center p-6 rounded-xl bg-green-50">
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">Inquiry-Based Learning</h3>
-            <p className="text-gray-600">An inquiry-based approach to instruction develops higher thinking and growth techniques in our girls.</p>
-          </div>
-          <div className="text-center p-6 rounded-xl bg-blue-50">
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">Modern Infrastructure</h3>
-            <p className="text-gray-600">We have good infrastructure with enough capacity and are well-furnished with all resources required in a girl’s secondary school.</p>
-          </div>
-        </div>
-      </section>
+      </div>
+    </section>
 
       {/* Technology & Innovation */}
       <section className="max-w-7xl mx-auto mb-16">
         <div className="grid md:grid-cols-2 gap-8 items-center">
           <div>
             <img 
-              src="https://via.placeholder.com/600x400?text=Tech+Lab" 
-              alt="Computer Laboratory" 
+              src={computer}
+              alt="Technology Hub"
               className="rounded-2xl shadow-lg w-full h-64 object-cover"
             />
           </div>
           <div className="space-y-4">
             <h2 className="text-3xl font-bold text-gray-900">Innovation in the 4IR Era</h2>
             <p className="text-lg text-gray-700 leading-relaxed">
-              St. Petes Girls is up to date with current technologies, with a study model that incorporates the best technologies in the current era of the 4th Industrial Revolution. St. Peter’s was nominated as the IT center in Masinga Sub-county due to our well-equipped computer laboratory.
-            </p>
-            <p className="text-lg text-gray-700 leading-relaxed">
-              With positive upbeat, we strongly believe that the same results we have achieved in the past will grow in our young girls and beyond.
+              St. Peters Academy embraces the technologies of the 4th Industrial Revolution. Our computer lab and digital programs empower students to think critically and innovate.
             </p>
             <div className="mt-4 p-4 bg-indigo-100 rounded-lg">
-              <p className="font-semibold text-indigo-800">Location: Ekalakala, Masinga Sub-county, Machakos County, Kenya</p>
+              <p className="font-semibold text-indigo-800">
+                Location: Ekalakala, Masinga Sub-County, Machakos County, Kenya
+              </p>
             </div>
           </div>
         </div>
@@ -103,28 +142,29 @@ const AboutUs = () => {
         <h2 className="text-3xl font-bold text-gray-900 text-center mb-8">Our Curriculum</h2>
         <div className="grid md:grid-cols-2 gap-8">
           <div>
-            <h3 className="text-2xl font-semibold text-gray-800 mb-4">2-6-3-3-3 Learning Programme</h3>
+            <h3 className="text-2xl font-semibold text-gray-800 mb-4">Competency-Based Education</h3>
             <p className="text-gray-700 leading-relaxed mb-4">
-              The school adheres to the strict regulations of the 2:6:3:3:3 learning programme. Students are examined internally through regular assignments, and those who fail to sit for these face disciplinary actions or discontinuation at management discretion.
+              Both our Primary and Secondary sections follow the 2-6-3-3-3 education system, promoting inquiry-based learning, creativity, and moral values.
             </p>
             <ul className="space-y-2 text-gray-600">
-              <li>• English</li>
-              <li>• Kiswahili</li>
+              <li>• English & Kiswahili</li>
               <li>• Mathematics</li>
-              <li>• Chemistry</li>
-              <li>• Physics</li>
-              <li>• Biology</li>
-              <li>• Geography</li>
-              <li>• History</li>
-              <li>• CRE</li>
-              <li>• Business Studies</li>
+              <li>• Sciences & Technology</li>
+              <li>• Humanities & CRE</li>
+              <li>• Business & Agriculture</li>
               <li>• Computer Studies</li>
-              <li>• Agriculture</li>
             </ul>
           </div>
           <div className="space-y-4">
-            <h3 className="text-2xl font-semibold text-gray-800">Textbooks & Resources</h3>
-            <p className="text-gray-700">Comprehensive textbooks and resources aligned with the national curriculum ensure a robust learning experience.</p>
+            <h3 className="text-2xl font-semibold text-gray-800">Learning Resources</h3>
+            <p className="text-gray-700">
+              Modern textbooks, e-learning resources, and mentorship programs ensure holistic student development and academic excellence.
+            </p>
+               <img 
+              src={learning}
+              alt="Technology Hub"
+              className="rounded-2xl shadow-lg w-full h-64 object-cover"
+            />
           </div>
         </div>
       </section>
@@ -136,34 +176,38 @@ const AboutUs = () => {
           <div className="bg-white rounded-2xl shadow-md p-6">
             <h3 className="text-2xl font-bold text-gray-900 mb-4 text-center">Extra-Curricular Activities</h3>
             <p className="text-gray-700 mb-4 text-center">
-              Participation is important and mandatory to enhance creativity, mental, and physical growth.
+              Creativity and teamwork are at the heart of our extra-curricular programs.
             </p>
             <ul className="grid md:grid-cols-2 gap-2 text-gray-600">
-              <li>• Football</li>
-              <li>• Handball</li>
-              <li>• Netball</li>
-              <li>• Athletics</li>
+              <li>• Football & Handball</li>
+              <li>• Netball & Athletics</li>
+              <li>• Music & Drama</li>
               <li>• Team Building</li>
-              <li>• Music</li>
-              <li>• Religious Activities</li>
+              <li>• Religious Growth</li>
             </ul>
+             <img 
+              src={cocurriculum}
+              alt="Technology Hub"
+              className="rounded-2xl shadow-lg w-full h-64 object-cover"
+            />
           </div>
           {/* Facilities */}
           <div className="bg-white rounded-2xl shadow-md p-6">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4 text-center">School Facilities</h3>
+            <h3 className="text-2xl font-bold text-gray-900 mb-4 text-center">Our Facilities</h3>
             <ul className="space-y-2 text-gray-600">
-              <li>• Well-equipped Library</li>
-              <li>• Computer Laboratory</li>
-              <li>• Science Laboratory</li>
-              <li>• Sports Grounds</li>
-              <li>• Prayer Chapel</li>
-              <li>• Self-Contained Dormitories</li>
-              <li>• Piped Water & Electricity</li>
-              <li>• Modern Dining Hall & Social Hall</li>
+              <li>• Fully Equipped Library</li>
+              <li>• Science & Computer Labs</li>
+              <li>• Spacious Classrooms</li>
+              <li>• Chapel for Prayer & Worship</li>
+              <li>• Dormitories with Modern Amenities</li>
+              <li>• Sports & Recreation Grounds</li>
+              <li>• Dining & Social Halls</li>
             </ul>
             <div className="mt-4 p-3 bg-green-50 rounded-lg">
-              <h4 className="font-semibold text-green-800 mb-2">School Meals</h4>
-              <p className="text-green-700 text-sm">We offer a balanced diet to accommodate all students’ tastes and daily dietary requirements for girls. No special meals unless instructed by the school nurse.</p>
+              <h4 className="font-semibold text-green-800 mb-2">Healthy Meals</h4>
+              <p className="text-green-700 text-sm">
+                We provide nutritious, balanced meals that support physical health and academic performance.
+              </p>
             </div>
           </div>
         </div>
@@ -171,12 +215,12 @@ const AboutUs = () => {
 
       {/* Closing */}
       <section className="text-center max-w-4xl mx-auto">
-        <h2 className="text-3xl font-bold text-gray-900 mb-4">Join Our Family</h2>
+        <h2 className="text-3xl font-bold text-gray-900 mb-4">Join the St. Peters Family</h2>
         <p className="text-lg text-gray-600 mb-8">
-          At St. Peter's Girls High School, we believe in fostering excellence, faith, and empowerment for every young woman.
+          Whether in Primary or Secondary, every learner at St. Peters Academy is part of a caring community that nurtures excellence, faith, and integrity.
         </p>
-        <button className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-8 rounded-full transition duration-300">
-          Learn More
+        <button className="bg-purple-900 hover:bg-indigo-700 text-white font-semibold py-3 px-8 rounded-full transition duration-300">
+          Enroll Today
         </button>
       </section>
     </div>

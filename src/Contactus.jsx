@@ -41,6 +41,11 @@ const ContactUs = () => {
         toast.error("❌ Failed to send message. Try again later.");
     });
   };
+  const latitude = -0.9698;
+  const longitude = 37.47;
+
+  // Embed Google Map URL
+  const mapUrl = `https://www.google.com/maps?q=${latitude},${longitude}&z=14&output=embed`;
 
   return (
     <>
@@ -152,13 +157,25 @@ const ContactUs = () => {
 
           {/* Map */}
           <div className="flex-1 min-w-[300px] h-full">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.019020324536!2d-122.41941568468145!3d37.77492977975966!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085808c5e5b7a1b%3A0x9b6c8f1b6f6b6f6b!2sSan%20Francisco%2C%20CA!5e0!3m2!1sen!2sus!4v1635783921467!5m2!1sen!2sus"
-              className="w-full h-full min-h-[500px] rounded-lg shadow-md"
-              allowFullScreen=""
-              loading="lazy"
-            ></iframe>
-          </div>
+  <iframe
+    src={mapUrl}
+    className="w-full h-full min-h-[500px] rounded-lg shadow-md"
+    allowFullScreen
+    loading="lazy"
+    title="School Location Map"
+  ></iframe>
+
+  <div className="mt-4 text-center text-gray-700">
+    <h3 className="text-lg font-semibold tracking-tight text-indigo-700">
+      ST. PETER'S ACADEMY
+    </h3>
+    <p className="text-sm text-gray-500 mt-1">
+      Ekalakala Location, Masinga Division <br />
+      Masinga Constituency, Eastern Kenya
+    </p>
+  </div>
+</div>
+
         </div>
       </section>
     </>

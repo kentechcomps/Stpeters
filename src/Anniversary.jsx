@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import logo from "./assets/logos.png"; // Ensure logo is in src/assets/logos.png
+import { NavLink } from "react-router-dom";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -59,8 +60,11 @@ const Anniversary = () => {
         </motion.p>
 
         {/* CTA Button */}
-        <motion.a
-          href="#enroll"
+        <NavLink
+        to='/admissions'
+        > 
+      <motion.a
+          
           className="inline-block px-8 py-3 rounded-full text-lg font-semibold 
                      bg-yellow-500 text-blue-900 shadow-lg 
                      hover:bg-yellow-400 hover:shadow-xl transition-transform duration-300"
@@ -69,6 +73,8 @@ const Anniversary = () => {
         >
           Join Our Legacy
         </motion.a>
+        </NavLink>
+        
       </div>
     </section>
   );

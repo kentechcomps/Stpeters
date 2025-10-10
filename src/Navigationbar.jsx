@@ -144,7 +144,7 @@ const Topnavigationbar = () => {
             <button
               onClick={handleLoginClick}
               disabled={loading}
-              className="flex items-center gap-1 px-4 py-2 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold shadow hover:scale-105 transition disabled:opacity-70 cursor-pointer"
+              className="flex items-center gap-1 px-4 py-2 rounded-full bg-purple-900 text-white font-semibold shadow hover:scale-105 transition disabled:opacity-70 cursor-pointer"
             >
               {loading ? (
                 <Loader2 className="w-4 h-4 animate-spin" />
