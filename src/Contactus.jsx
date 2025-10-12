@@ -41,11 +41,12 @@ const ContactUs = () => {
         toast.error("❌ Failed to send message. Try again later.");
     });
   };
-  const latitude = -0.9698;
-  const longitude = 37.47;
+  const latitude = -0.96996;
+  const longitude = 37.47008;
 
   // Embed Google Map URL
-  const mapUrl = `https://www.google.com/maps?q=${latitude},${longitude}&z=14&output=embed`;
+const mapUrl = `https://www.google.com/maps?q=ST.+PETER'S+PRI+SCH+EKALAKALA&z=15&output=embed`;
+
 
   return (
     <>
@@ -54,7 +55,7 @@ const ContactUs = () => {
         className="relative h-80 flex items-center justify-center bg-cover bg-center"
         style={{ backgroundImage: `url(${learners})` }}
       >
-        <div className="absolute inset-0 bg-[rgba(0,0,128,0.7)] z-10"></div>
+        <div className="absolute inset-0 bg-purple-900 "></div>
         <h1 className="relative z-20 text-5xl font-bold text-yellow-400 text-shadow-lg">
           CONTACT US
         </h1>
@@ -156,25 +157,23 @@ const ContactUs = () => {
           </div>
 
           {/* Map */}
-          <div className="flex-1 min-w-[300px] h-full">
-  <iframe
-    src={mapUrl}
-    className="w-full h-full min-h-[500px] rounded-lg shadow-md"
-    allowFullScreen
-    loading="lazy"
-    title="School Location Map"
-  ></iframe>
+<div className="flex-1 min-w-[300px] h-full">
+  <a
+    href="https://www.google.com/maps/place/ST+PETER+PRIMARY+EKALAKALA"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <iframe
+      src={mapUrl}
+      className="w-full h-full min-h-[500px] rounded-lg shadow-md"
+      allowFullScreen
+      loading="lazy"
+      title="ST. PETER PRIMARY EKALAKALA Map"
+    ></iframe>
+  </a>
 
-  <div className="mt-4 text-center text-gray-700">
-    <h3 className="text-lg font-semibold tracking-tight text-indigo-700">
-      ST. PETER'S ACADEMY
-    </h3>
-    <p className="text-sm text-gray-500 mt-1">
-      Ekalakala Location, Masinga Division <br />
-      Masinga Constituency, Eastern Kenya
-    </p>
-  </div>
 </div>
+
 
         </div>
       </section>

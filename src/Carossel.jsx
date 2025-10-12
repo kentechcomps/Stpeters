@@ -3,7 +3,7 @@ import pic1 from './assets/pic1.jpg';
 import pic2 from './assets/pic2.jpg';
 import pic3 from './assets/pic3.jpg';
 import pic4 from './assets/pic4.jpg';
-import student from './assets/student.webp'
+import student from './assets/logos.png'
 import banner from './assets/banner.jpg'
 import { NavLink } from 'react-router-dom';
 
@@ -28,7 +28,7 @@ function Carousel() {
 
   return (
     <>
-    <section className="relative bg-gradient-to-r from-purple-900 to-purple-900 py-20 overflow-hidden">
+    <section className="relative bg-gradient-to-r from-purple-900 to-purple-200 py-20 overflow-hidden">
   {/* Animated Waves */}
 <div className="absolute inset-0">
     {/* Back wave (slower) */}
@@ -103,7 +103,7 @@ function Carousel() {
       <img
         src={student}
         alt="Students Learning"
-        className="w-full max-w-md mx-auto rounded-2xl shadow-lg border-4 border-[#fbbf24]"
+        className="w-full max-w-md mx-auto  "
       />
     </div>
   </div>

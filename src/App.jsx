@@ -34,7 +34,9 @@ import ContactUs from './Contactus.jsx'
 import { Toaster } from "react-hot-toast"
 import AdmissionWizard from './Admissions.jsx'
 import SchoolFeeSection from './Feesection.jsx'; // Adjust the path as necessary to where you saved the FeeSection component
-import AboutUs from './Aboutus.jsx'
+import AboutUs from './Aboutus.jsx';
+import Clerkoptions from './Clerkoption.jsx'
+
 function App() {
   const [count, setCount] = useState(0)
 
@@ -51,6 +53,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path='/login' element= {<Login/>}/>
+
           <Route path='/dashboard' 
            element={
               <ProtectedRoute allowedRoles={["admin"]}>
@@ -86,18 +89,29 @@ function App() {
         <Route path='/materials' element={<TeacherMaterials/>}/>
         <Route path='/announcement' element={<TeacherAnnouncements/>}/>
         <Route path='teacherparent' element={<TeacherParents/>} />
-        <Route path='/clerksdashboard' 
-        element={
-              <ProtectedRoute allowedRoles={["clerk"]}>
-                <ClerkDashboard />
-              </ProtectedRoute> }
-        
-        />
         <Route path='/feemanagement' element={<ClerkPayments/>}/>
         <Route path='/contactus' element={<ContactUs/>}/>
         <Route path='/admissions' element={<AdmissionWizard/>}/>
         <Route path='/feesection' element={<SchoolFeeSection/>}/>
         <Route path='/aboutus' element={<AboutUs/>}/>
+
+         <Route path='/clerksdashboard' 
+           element={
+              <ProtectedRoute allowedRoles={["clerk"]}>
+                 <ClerkDashboard />
+              </ProtectedRoute>
+            }
+          
+          >
+            <Route index element={<Clerkoptions/>} />
+            <Route path="teachers" element={<Teachers/>} />
+            <Route path= "admindashboardoverview" element={<Admindashboardoverview/>} />
+            <Route path= "ManageStudents" element={<ManageStudents/>} />
+            <Route path='feemanagement' element={<ClerkPayments/>}/>
+            <Route path='notices' element={<Announcements/>}/>
+            <Route path="reports" element={<ReportsDashboard/>} />
+            <Route path="clerkoptions" element={<Clerkoptions/>} />
+          </Route>
         </Routes>
          <Footer/>
 

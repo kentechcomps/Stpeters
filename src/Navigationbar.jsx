@@ -49,7 +49,10 @@ const Topnavigationbar = () => {
       <nav className="max-w-7xl mx-auto flex items-center justify-between px-6 py-3 md:px-10">
         
         {/* Logo */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 cursor-pointer" 
+        onClick={() => navigate('/')}
+
+        >
           <img src={logo} alt="Logo" className="h-12 w-auto" />
           <span className="font-bold text-lg text-gray-800">St. Peter’s Academy</span>
         </div>
