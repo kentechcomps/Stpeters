@@ -87,9 +87,9 @@ const Topnavigationbar = () => {
           }`}
         >
           <NavLink to="/" className="hover:text-blue-600">Home</NavLink>
-          <NavLink to="/aboutus" className="hover:text-blue-600">Aboutus</NavLink>
+          <NavLink to="/aboutus" className="hover:text-blue-600">About</NavLink>
           <NavLink to="/admissions" className="hover:text-blue-600">Admissions</NavLink>
-          <NavLink to="/contactus" className="hover:text-blue-600">Contactus</NavLink>
+          <NavLink to="/contactus" className="hover:text-blue-600">Contact us</NavLink>
 
           {/* Mobile Extras */}
           <div className="flex flex-col md:hidden gap-6 mt-6">

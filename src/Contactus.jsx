@@ -58,6 +58,7 @@ const mapUrl = `https://www.google.com/maps?q=ST.+PETER'S+PRI+SCH+EKALAKALA&z=15
         <div className="absolute inset-0 bg-purple-900 "></div>
         <h1 className="relative z-20 text-5xl font-bold text-yellow-400 text-shadow-lg">
           CONTACT US
+          
         </h1>
       </section>
 

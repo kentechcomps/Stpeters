@@ -11,18 +11,22 @@ import Programs from './Program.jsx';
 import AchievementsSection from './Achievementsection.jsx';
 import Anniversary from './Anniversary.jsx';
 import ManagersReport from './Managersreport.jsx';
+import Pictorials from './Pictorials.jsx';
+import Slide from './slidepic.jsx';
 
 function Home() {
   return (
    <div className="relative">
     
       <Carousel />
+      <Slide />
       <Mission />
       <Chooseus />
       <Anniversary />
       <AchievementsSection />
       <ManagersReport />
       <Programs />
+    
       
       
    

@@ -15,7 +15,7 @@ const Clerkoptions = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Add Student */}
           <Link
-            to="/clerk/students/add"
+            to="/clerksdashboard/users"
             className="bg-white shadow-md p-6 rounded-2xl hover:shadow-lg transition"
           >
             <div className="flex items-center justify-between">
@@ -23,6 +23,16 @@ const Clerkoptions = () => {
               <UserPlus className="text-purple-600" size={30} />
             </div>
             <p className="text-gray-500 mt-2">Register a new student.</p>
+          </Link>
+                    <Link
+            to="/clerk/students/add"
+            className="bg-white shadow-md p-6 rounded-2xl hover:shadow-lg transition"
+          >
+            <div className="flex items-center justify-between">
+              <h2 className="text-lg font-semibold text-gray-700">Add Parent</h2>
+              <UserPlus className="text-purple-600" size={30} />
+            </div>
+            <p className="text-gray-500 mt-2">Register a Parent</p>
           </Link>
 
           {/* Record Payment */}

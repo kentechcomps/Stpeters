@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, use } from "react";
 import { PlusCircle, Users } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "./Authcontext";
 
 const MyUsers = () => {
   const [showModal, setShowModal] = useState(false);
@@ -11,6 +12,13 @@ const MyUsers = () => {
   const [selectedParentId, setSelectedParentId] = useState("");
   const [parentPhone, setParentPhone] = useState("");
   const navigate = useNavigate();
+
+  const { user } = useAuth(); // Get current user role
+
+  useEffect(() => {
+    console.log(`Current User Role: ${user.role}`);
+    
+  }, [user]);
 
   // Fetch classes and parents when modal opens
   useEffect(() => {
@@ -136,12 +144,22 @@ const MyUsers = () => {
                   required
                   className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400"
                 >
-                  <option value="">Select Role</option>
-                  <option value="admin">Admin</option>
-                  <option value="teacher">Teacher</option>
-                  <option value="clerk">Clerk</option>
-                  <option value="parent">Parent</option>
-                  <option value="student">Student</option>
+ <option value="">Select Role</option>
+  {user.role === "clerk" ? (
+    <>
+      <option value="parent">Parent</option>
+      <option value="student">Student</option>
+    </>
+  ) : (
+    <>
+      <option value="admin">Admin</option>
+      <option value="teacher">Teacher</option>
+      <option value="clerk">Clerk</option>
+      <option value="parent">Parent</option>
+      <option value="student">Student</option>
+    </>
+  )}
+
                 </select>
               </div>
 

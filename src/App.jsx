@@ -36,7 +36,12 @@ import AdmissionWizard from './Admissions.jsx'
 import SchoolFeeSection from './Feesection.jsx'; // Adjust the path as necessary to where you saved the FeeSection component
 import AboutUs from './Aboutus.jsx';
 import Clerkoptions from './Clerkoption.jsx'
-
+import PrePrimary from './Prepimarypage.jsx'
+import Primary from './Primary.jsx'
+import JuniorSecondary from './Jss.jsx'
+import SeniorSecondary from './Secondary.jsx'
+import Pictorials from './Pictorials.jsx'
+import Slide from './slidepic.jsx'
 function App() {
   const [count, setCount] = useState(0)
 
@@ -95,6 +100,13 @@ function App() {
         <Route path='/feesection' element={<SchoolFeeSection/>}/>
         <Route path='/aboutus' element={<AboutUs/>}/>
 
+        <Route path='/preprimary' element={<PrePrimary/>}/>
+        <Route path='/primary' element={<Primary/>}/>
+        <Route path='/junior-secondary' element={<JuniorSecondary/>}/>
+        <Route path='/secondary' element={<SeniorSecondary/>}/>
+        <Route path='/pictorials' element={<Pictorials/>}/>
+        <Route path='/slide' element={<Slide/>}/>
+
          <Route path='/clerksdashboard' 
            element={
               <ProtectedRoute allowedRoles={["clerk"]}>
@@ -104,6 +116,7 @@ function App() {
           
           >
             <Route index element={<Clerkoptions/>} />
+            <Route path="users" element={<Users/>} />
             <Route path="teachers" element={<Teachers/>} />
             <Route path= "admindashboardoverview" element={<Admindashboardoverview/>} />
             <Route path= "ManageStudents" element={<ManageStudents/>} />
