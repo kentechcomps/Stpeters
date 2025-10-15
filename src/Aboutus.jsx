@@ -1,8 +1,11 @@
 import React from 'react';
 import { Users, BookOpen, Star, Globe, HeartHandshake } from "lucide-react"; // icons
 import computer from './assets/computer.webp'
-import learning from './assets/learning.webp'
+import learning from './assets/labs.jpeg'
 import cocurriculum from './assets/cocurriculum.webp'
+import pic4 from './assets/pic4.png'
+import learning2 from './assets/learning.jpeg'
+import eating from './assets/eating.png' // Ensure this matches your file
 
 const AboutUs = () => {
     const strengths = [
@@ -77,13 +80,13 @@ const AboutUs = () => {
               "We empower young girls and boys through knowledge, discipline, and Christian values — building tomorrow’s leaders today."
             </blockquote>
           </div>
-          <div className="relative">
-            <div className="bg-gradient-to-r from-indigo-600 to-blue-500 rounded-2xl p-8 h-96 flex items-center justify-center shadow-lg hover:scale-105 transition-transform duration-300">
-              <div className="text-white text-center">
-                <h3 className="text-2xl font-semibold mb-2">Excellence Since 2004</h3>
-                <p className="text-indigo-100">From Primary to Secondary — Transforming Lives</p>
-              </div>
-            </div>
+         
+            <div className=" rounded-2xl flex items-center justify-center shadow-lg hover:scale-105 transition-transform duration-300">
+            
+               <img src={pic4} alt="About us" className="rounded-2xl shadow-lg w-full h-full object-cover">
+               </img>
+              
+          
           </div>
         </div>
       </section>
@@ -154,6 +157,13 @@ const AboutUs = () => {
               <li>• Business & Agriculture</li>
               <li>• Computer Studies</li>
             </ul>
+                      <div>
+            <img 
+              src={learning}
+              alt="Technology Hub"
+              className="rounded-2xl shadow-lg w-full h-64 object-cover"
+            />
+          </div>
           </div>
           <div className="space-y-4">
             <h3 className="text-2xl font-semibold text-gray-800">Learning Resources</h3>
@@ -161,7 +171,7 @@ const AboutUs = () => {
               Modern textbooks, e-learning resources, and mentorship programs ensure holistic student development and academic excellence.
             </p>
                <img 
-              src={learning}
+              src={learning2}
               alt="Technology Hub"
               className="rounded-2xl shadow-lg w-full h-64 object-cover"
             />
@@ -208,6 +218,13 @@ const AboutUs = () => {
               <p className="text-green-700 text-sm">
                 We provide nutritious, balanced meals that support physical health and academic performance.
               </p>
+                        <div>
+            <img 
+              src={eating}
+              alt="Technology Hub"
+              className="rounded-2xl shadow-lg w-full h-64 object-cover"
+            />
+          </div>
             </div>
           </div>
         </div>

@@ -132,12 +132,12 @@ function App() {
         
       </BrowserRouter>
            <a
-        href="https://wa.me/254700000000" // replace with your number
+        href="https://wa.me/27718602038" // replace with your number
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg flex items-center justify-center"
       >
-        <FaWhatsapp size={28} />
+        <FaWhatsapp size={28} /> Talk to us
       </a>
     </>
   )
