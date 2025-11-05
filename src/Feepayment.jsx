@@ -1,5 +1,5 @@
 // ClerkPayments.jsx
-import React, { useState } from "react";
+import React, { useState , useEffect, use} from "react";
 import { Download, Wallet } from "lucide-react";
 import { Bar } from "react-chartjs-2";
 import * as XLSX from "xlsx";
@@ -26,7 +26,7 @@ const ClerkPayments = () => {
     method: "Mpesa",
     transactionCode: "",
   });
-
+const [classes , setClasses] = useState([])
   const [currentPage, setCurrentPage] = useState(1);
   const [outstandingPage, setOutstandingPage] = useState(1);
   const [searchOutstanding, setSearchOutstanding] = useState("");
@@ -168,12 +168,147 @@ const ClerkPayments = () => {
       },
     ],
   };
+   const [fees, setFees] = useState([]);
+  const [form, setForm] = useState({
+    class_level: "",
+    term: "",
+    year: new Date().getFullYear(),
+    amount: "",
+  });
+  const [message, setMessage] = useState("");
+
+  const fetchFees = async () => {
+    const res = await fetch("http://127.0.0.1:5000/api/fees");
+    const data = await res.json();
+    setFees(data);
+  };
+
+  const handleSubmitfees = async (e) => {
+    e.preventDefault();
+    setMessage("");
+    const res = await fetch("http://127.0.0.1:5000/api/fees", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(form),
+    });
+    const data = await res.json();
+    if (res.ok) {
+      setMessage("✅ Fee structure saved!");
+      setForm({ class_level: "", term: "", year: new Date().getFullYear(), amount: "" });
+      fetchFees();
+    } else {
+      setMessage(data.error || "❌ Failed to save fee.");
+    }
+  };
+
+  useEffect(() => {
+    fetchFees();
+  }, []);
+
+  useEffect(() => {
+    fetchClasses();
+  }, []);
+
+    const fetchClasses = async () => {
+    try {
+      const res = await fetch("http://localhost:5000/api/classes");
+      const data = await res.json();
+      setClasses(data);
+      console.log("Classes fetched:", data);
+      
+    } catch (err) {
+      console.error("Error fetching classes:", err.message);
+    }
+  };
+
 
   return (
     <div className="p-6">
       <h1 className="text-2xl font-bold text-purple-900 mb-6 flex items-center gap-2">
         <Wallet className="text-purple-600" /> Fees & Payments
       </h1>
+<div className="p-6 max-w-6xl mx-auto">
+  <h2 className="text-2xl font-bold mb-6 text-center">Set Fees</h2>
+
+  {/* Flex container for form and table */}
+  <div className="flex flex-col md:flex-row gap-6">
+    {/* Left side: Form */}
+    <div className="w-full md:w-1/2 bg-white shadow rounded-lg p-4">
+      <h3 className="text-lg font-semibold mb-3">Add / Update Fee</h3>
+      <form onSubmit={handleSubmitfees} className="space-y-4">
+        <div>
+                       <label className="block text-gray-600 text-sm mb-1">
+                      Class Name
+                    </label>
+                    <select
+                      name="class_level"
+                      required
+                      className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400"
+                    >
+                      <option value="">Select Class</option>
+                      {classes.map((cls) => (
+                        <option key={cls.id} value={cls.name}>
+                          {cls.name} ({cls.category})
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+        <input
+          type="text"
+          placeholder="Term (e.g. Term 2)"
+          value={form.term}
+          onChange={(e) => setForm({ ...form, term: e.target.value })}
+          className="w-full border p-2 rounded"
+        />
+        <input
+          type="number"
+          placeholder="Year"
+          value={form.year}
+          onChange={(e) => setForm({ ...form, year: e.target.value })}
+          className="w-full border p-2 rounded"
+        />
+        <input
+          type="number"
+          placeholder="Amount (KES)"
+          value={form.amount}
+          onChange={(e) => setForm({ ...form, amount: e.target.value })}
+          className="w-full border p-2 rounded"
+        />
+
+        <button className="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700">
+          Save Fee
+        </button>
+      </form>
+
+      {message && <p className="text-center text-sm mt-3">{message}</p>}
+    </div>
+
+    {/* Right side: Table */}
+    <div className="w-full md:w-1/2 bg-white shadow rounded-lg p-4 overflow-x-auto">
+      <h3 className="text-lg font-semibold mb-3">Current Fees</h3>
+      <table className="w-full border text-left text-sm">
+        <thead className="bg-gray-100">
+          <tr>
+            <th className="p-2 border">Class</th>
+            <th className="p-2 border">Term</th>
+            <th className="p-2 border">Year</th>
+            <th className="p-2 border">Amount (KES)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {fees.map((f) => (
+            <tr key={f.id} className="hover:bg-gray-50">
+              <td className="p-2 border">{f.class_level}</td>
+              <td className="p-2 border">{f.term}</td>
+              <td className="p-2 border">{f.year}</td>
+              <td className="p-2 border">{f.amount}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
       {/* Record Payment Form */}
       <div className="bg-white p-6 rounded-2xl shadow mb-8">
@@ -428,6 +563,11 @@ const ClerkPayments = () => {
           </div>
         )}
       </div>
+
+  
+
+
+
     </div>
   );
 };
