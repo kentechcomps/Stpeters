@@ -162,8 +162,7 @@ It helps schools minimize paperwork, reduce human error, and improve communicati
 
 **Kennedy Mutuku**  
 Full Stack Developer | React · Flask · PostgreSQL  
-📧 [Your Email Here]  
-🌐 [Portfolio / GitHub Profile Link]
+
 
 ---
 
