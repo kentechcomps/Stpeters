@@ -13,7 +13,7 @@ const AdminDashboard = () => {
   };
 
   return (
-    <div className="flex h-screen bg-gray-100">
+    <div className="flex h-screen bg-gray-100 mt-16">
       {/* Sidebar */}
       <div className={`bg-white shadow-lg p-5 transition-all duration-300 ${isOpen ? "w-64" : "w-20"} flex flex-col`}>
         <button
@@ -23,7 +23,7 @@ const AdminDashboard = () => {
           {isOpen ? "⏪" : "⏩"}
         </button>
 
-        <nav className="flex flex-col gap-4 text-gray-700 font-medium">
+        <nav className="flex flex-col gap-4 text-gray-700 font-medium ">
           <NavLink to="/dashboard/admindashboardoverview" className="flex items-center gap-3 hover:text-red-600">
             <FaUsers /> {isOpen && "Home"}
           </NavLink>
@@ -56,9 +56,10 @@ const AdminDashboard = () => {
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 flex flex-col">
+      <div className="flex-1 flex flex-col ">
         {/* Top Navbar */}
-        <header className="bg-white shadow-md p-4 flex justify-between items-center">
+       <header className="fixed top-0 left-0 right-0 bg-white shadow-md p-4 flex justify-between items-center z-50">
+
           <h1 className="text-xl font-bold text-gray-700">🎓 School Admin Dashboard</h1>
           <div className="flex items-center gap-3">
             <img
@@ -71,7 +72,7 @@ const AdminDashboard = () => {
         </header>
 
         {/* Main Display */}
-        <main className="p-6 overflow-y-auto">
+        <main className="p-6 overflow-y-auto mt-4">
           <Outlet /> {/* Child routes will render here */}
         </main>
       </div>

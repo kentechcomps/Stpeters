@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { ArrowRight, Loader2, Facebook, Twitter, Instagram, Linkedin } from "lucide-react"; 
+import { ArrowRight, Loader2, Facebook, FacebookIcon  } from "lucide-react"; 
 import logo from './assets/logo.png'; 
 
 const Topnavigationbar = () => {
@@ -95,7 +95,7 @@ const Topnavigationbar = () => {
           <div className="flex flex-col md:hidden gap-6 mt-6">
             {/* Social Icons */}
             <div className="flex justify-center space-x-6 mt-6">
-              {[Facebook, Twitter, Instagram, Linkedin].map((Icon, i) => (
+              {[FacebookIcon].map((Icon, i) => (
                 <a key={i} href="#" className="bg-white p-2 rounded-full text-blue-900 hover:bg-yellow-400 transition-all">
                   <Icon className="w-5 h-5" />
                 </a>
@@ -129,8 +129,8 @@ const Topnavigationbar = () => {
         <div className="hidden md:flex items-center gap-6">
           {/* Social Icons */}
           <div className="flex items-center space-x-4">
-            {[Facebook, Twitter, Instagram, Linkedin].map((Icon, i) => (
-              <a key={i} href="#" className="bg-white p-2 rounded-full text-blue-900 hover:bg-yellow-400 transition-all">
+            {[Facebook].map((Icon, i) => (
+              <a key={i} href="https://web.facebook.com/p/St-Peters-Academy-Ekalakala-100054314510163/?_rdc=1&_rdr#" className="bg-white p-2 rounded-full text-blue-900 hover:bg-yellow-400 transition-all">
                 <Icon className="w-5 h-5" />
               </a>
             ))}

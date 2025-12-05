@@ -19,7 +19,7 @@ const ClerkDashboard = () => {
           <Link to="/clerksdashboard/ManageStudents" className="flex items-center space-x-2 hover:bg-purple-700 p-2 rounded">
             <UserPlus size={18} /> <span>Student Records</span>
           </Link>
-          <Link to="/clerksdashboard/ManageStudents" className="flex items-center space-x-2 hover:bg-purple-700 p-2 rounded">
+          <Link to="/clerksdashboard/ManageTeachers" className="flex items-center space-x-2 hover:bg-purple-700 p-2 rounded">
             <UserPlus size={18} /> <span> Teachers Records</span>
           </Link>
           <Link to="/clerksdashboard/feemanagement" className="flex items-center space-x-2 hover:bg-purple-700 p-2 rounded">

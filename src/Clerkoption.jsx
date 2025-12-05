@@ -19,20 +19,10 @@ const Clerkoptions = () => {
             className="bg-white shadow-md p-6 rounded-2xl hover:shadow-lg transition"
           >
             <div className="flex items-center justify-between">
-              <h2 className="text-lg font-semibold text-gray-700">Add Student</h2>
+              <h2 className="text-lg font-semibold text-gray-700">Add Student/Parent</h2>
               <UserPlus className="text-purple-600" size={30} />
             </div>
-            <p className="text-gray-500 mt-2">Register a new student.</p>
-          </Link>
-                    <Link
-            to="/clerk/students/add"
-            className="bg-white shadow-md p-6 rounded-2xl hover:shadow-lg transition"
-          >
-            <div className="flex items-center justify-between">
-              <h2 className="text-lg font-semibold text-gray-700">Add Parent</h2>
-              <UserPlus className="text-purple-600" size={30} />
-            </div>
-            <p className="text-gray-500 mt-2">Register a Parent</p>
+            <p className="text-gray-500 mt-2">Register a new student/Parent</p>
           </Link>
 
           {/* Record Payment */}

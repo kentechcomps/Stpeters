@@ -1,5 +1,6 @@
 import { FiMail, FiPhone, FiMapPin } from 'react-icons/fi';
 import { FaInbox, FaFacebook, FaInstagram } from 'react-icons/fa';
+import logo from './assets/logos.png';
 
 const Footer = () => {
   return (
@@ -23,8 +24,13 @@ const Footer = () => {
           <div className="flex flex-col items-center md:items-start">
             <h2 className="text-2xl font-bold mb-2">ST PETERS ACADEMY</h2>
             <p className="text-sm text-gray-300 text-center md:text-left">
-              Empowering local farmers through sustainable maize sourcing and milling.
+              Providing quality education and a nurturing environment for tomorrow’s leaders.
             </p>
+              <img
+              src={logo} // replace with your logo path
+              alt="ST Peters Academy Logo"
+              className="mt-4 w-60 h-60"
+              />
           </div>
 
           {/* Column 2: Contact */}
@@ -37,7 +43,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-3 text-base">
                 <FiPhone className="text-xl text-blue-400" />
-                0718060754 / 0700699101
+                0727 069022
               </li>
               <li className="flex items-center gap-3 text-base">
                 <FaInbox className="text-xl text-blue-400" />
@@ -52,7 +58,7 @@ const Footer = () => {
             {/* Social Media Icons */}
             <div className="flex mt-5 gap-4 text-2xl">
               <a
-                href="https://facebook.com"
+                href="https://web.facebook.com/p/St-Peters-Academy-Ekalakala-100054314510163/?_rdc=1&_rdr#"
                 className="text-blue-400 hover:text-white transition"
                 aria-label="Facebook"
               >
