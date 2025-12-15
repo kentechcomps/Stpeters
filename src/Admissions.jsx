@@ -104,7 +104,7 @@ const handleSubmit = async () => {
 
   const fetchClasses = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/classes");
+      const res = await fetch("https://stpetersbackend.onrender.com/api/classes");
       const data = await res.json();
       setClasses(data);
       console.log("Classes fetched:", data);
@@ -119,9 +119,9 @@ useEffect(() => {
 }, []);
 
   return (
-    <div className="w-[70%] mx-auto p-6 bg-white shadow-lg rounded-lg">
+    <div className="w-[70%] mx-auto p-6 bg-white shadow-lg rounded-lg mt-12">
       {/* Static Content */}
-      <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white py-12 px-4 sm:px-6 lg:px-8">
+      <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white py-12 px-4 sm:px-6 lg:px-8 mt-12">
         <div className="max-w-4xl mx-auto">
           {/* Header Section */}
           <div className="text-center mb-12">

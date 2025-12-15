@@ -1,16 +1,17 @@
 import { useState } from "react";
 import {Link , NavLink, Outlet, useNavigate } from "react-router-dom";
 import { FaUsers, FaChalkboardTeacher, FaUserGraduate, FaMoneyBill, FaBell, FaChartBar, FaCog, FaSignOutAlt } from "react-icons/fa";
-
+import { useAuth } from "./Authcontext"
 const AdminDashboard = () => {
   const [isOpen, setIsOpen] = useState(true);
   const navigate = useNavigate();
 
+  const { logout } = useAuth(); 
+
   const handleLogout = () => {
-    // TODO: Clear auth token/session
-    console.log("Logged out");
-    navigate("/login");
-  };
+    logout(); 
+    navigate("/login"); 
+  }
 
   return (
     <div className="flex h-screen bg-gray-100 mt-16">
@@ -32,6 +33,9 @@ const AdminDashboard = () => {
           </Link>
           <Link to="/dashboard/ManageStudents" className="flex items-center gap-3 hover:text-red-600">
             <FaUserGraduate /> {isOpen && "Students"}
+          </Link>
+          <Link to="/dashboard/admissions" className="flex items-center gap-3 hover:text-red-600">
+            <FaUserGraduate /> {isOpen && "Admissions"}
           </Link>
           <Link to="/dashboard/feemanagement" className="flex items-center gap-3 hover:text-red-600">
             <FaMoneyBill /> {isOpen && "Finance"}

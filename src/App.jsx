@@ -43,6 +43,7 @@ import SeniorSecondary from './Secondary.jsx'
 import Pictorials from './Pictorials.jsx'
 import Slide from './slidepic.jsx'
 import ManageTeachers from './Manageteachers.jsx'
+import AdminAdmissions from './Viewnewadmissions.jsx'
 
 /* ---------------------------------------------------------
    InnerApp Component (useLocation MUST be inside BrowserRouter)
@@ -89,6 +90,7 @@ function InnerApp() {
           <Route path="feemanagement" element={<ClerkPayments />} />
           <Route path="notices" element={<Announcements />} />
           <Route path="reports" element={<ReportsDashboard />} />
+          <Route path="admissions" element={<AdminAdmissions />} />
           <Route path="settings" element={<SettingsPage />} />
         </Route>
 

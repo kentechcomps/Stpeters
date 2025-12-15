@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { ArrowRight, Loader2, Facebook, FacebookIcon  } from "lucide-react"; 
+import { ArrowRight, Loader2, Facebook, GraduationCap } from "lucide-react"; 
 import logo from './assets/logo.png'; 
 
 const Topnavigationbar = () => {
@@ -24,13 +24,11 @@ const Topnavigationbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      if (Math.abs(currentScrollY - lastScrollY) < 5) return; // prevent flickering
+      if (Math.abs(currentScrollY - lastScrollY) < 5) return;
 
       if (currentScrollY > lastScrollY && currentScrollY > 80) {
-        // scrolling down
         setIsVisible(false);
       } else {
-        // scrolling up
         setIsVisible(true);
       }
       setLastScrollY(currentScrollY);
@@ -49,17 +47,19 @@ const Topnavigationbar = () => {
       <nav className="max-w-7xl mx-auto flex items-center justify-between px-6 py-3 md:px-10">
         
         {/* Logo */}
-        <div className="flex items-center gap-2 cursor-pointer" 
-        onClick={() => navigate('/')}
-
+        <div
+          className="flex items-center gap-2 cursor-pointer"
+          onClick={() => navigate('/')}
         >
           <img src={logo} alt="Logo" className="h-12 w-auto" />
-          <span className="font-bold text-lg text-gray-800">St. Peter’s Academy</span>
+          <span className="font-bold text-lg text-gray-800">
+            St. Peter’s Academy
+          </span>
         </div>
 
         {/* Menu Toggle (Mobile) */}
-        <button 
-          onClick={toggleMenu} 
+        <button
+          onClick={toggleMenu}
           aria-label="Toggle menu"
           className="md:hidden focus:outline-none"
         >
@@ -93,10 +93,27 @@ const Topnavigationbar = () => {
 
           {/* Mobile Extras */}
           <div className="flex flex-col md:hidden gap-6 mt-6">
+            
+            {/* Grade 10 Badge (Mobile) */}
+            <div
+              onClick={() => navigate('/admissions')}
+              className="flex items-center justify-center gap-2 text-center px-6 py-3 rounded-full bg-gradient-to-r from-blue-500 via-indigo-600 to-purple-600 text-white text-sm font-bold shadow-xl ring-2 ring-blue-200/30 backdrop-blur-sm animate-pulse hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-300 cursor-pointer"
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => e.key === 'Enter' && navigate('/admissions')}
+            >
+              <GraduationCap className="w-4 h-4 flex-shrink-0" aria-hidden="true" />
+              <span>GRADE 10 now available</span>
+            </div>
+
             {/* Social Icons */}
-            <div className="flex justify-center space-x-6 mt-6">
-              {[FacebookIcon].map((Icon, i) => (
-                <a key={i} href="#" className="bg-white p-2 rounded-full text-blue-900 hover:bg-yellow-400 transition-all">
+            <div className="flex justify-center space-x-6 mt-2">
+              {[Facebook].map((Icon, i) => (
+                <a
+                  key={i}
+                  href="#"
+                  className="bg-white p-2 rounded-full text-blue-900 hover:bg-yellow-400 transition-all"
+                >
                   <Icon className="w-5 h-5" />
                 </a>
               ))}
@@ -127,10 +144,27 @@ const Topnavigationbar = () => {
 
         {/* Right Section (Desktop Only) */}
         <div className="hidden md:flex items-center gap-6">
+          
+          {/* Grade 10 Badge (Desktop) */}
+          <div
+            onClick={() => navigate('/admissions')}
+            className="flex items-center gap-2 cursor-pointer px-6 py-3 rounded-full bg-gradient-to-r from-blue-500 via-indigo-600 to-purple-600 text-white text-sm font-bold shadow-xl ring-2 ring-blue-200/30 backdrop-blur-sm animate-pulse hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-300"
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => e.key === 'Enter' && navigate('/admissions')}
+          >
+            <GraduationCap className="w-4 h-4 flex-shrink-0" aria-hidden="true" />
+            <span>GRADE 10 available</span>
+          </div>
+
           {/* Social Icons */}
           <div className="flex items-center space-x-4">
             {[Facebook].map((Icon, i) => (
-              <a key={i} href="https://web.facebook.com/p/St-Peters-Academy-Ekalakala-100054314510163/?_rdc=1&_rdr#" className="bg-white p-2 rounded-full text-blue-900 hover:bg-yellow-400 transition-all">
+              <a
+                key={i}
+                href="https://web.facebook.com/p/St-Peters-Academy-Ekalakala-100054314510163/?_rdc=1&_rdr#"
+                className="bg-white p-2 rounded-full text-blue-900 hover:bg-yellow-400 transition-all"
+              >
                 <Icon className="w-5 h-5" />
               </a>
             ))}
